@@ -1,12 +1,50 @@
-import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { DataService } from '../core/services/data.service';
+import { VaccineEngineService } from '../core/services/vaccine-engine.service';
+import { IChild, VaccineStatus } from '../core/models/vaccine.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent],
+  standalone: true,
+  imports: [IonicModule, CommonModule, RouterModule],
 })
-export class HomePage {
-  constructor() {}
+export class HomePage implements OnInit {
+  public childrenList: any[] = [];
+  public activeCampaigns: any[] = [];
+
+  constructor(
+    private dataService: DataService,
+    private vaxEngine: VaccineEngineService
+  ) {}
+
+  ngOnInit() {
+    this.activeCampaigns = this.dataService.getCampaigns();
+    this.loadChildrenDashboard();
+  }
+
+  loadChildrenDashboard() {
+    const rawChildren = this.dataService.getChildren();
+
+    this.childrenList = rawChildren.map(child => {
+      const records = this.dataService.getRecordsByChildId(child.id);
+
+      const updatedRecords = records.map(r => ({
+        ...r,
+        status: this.vaxEngine.determineRecordStatus(r)
+      }));
+
+      const hasOverdue = updatedRecords.some(r => r.status === VaccineStatus.OVERDUE);
+
+      return {
+        ...child,
+        statusResumo: hasOverdue ? 'Pendente de Atenção' : 'Caderneta em Dia',
+        hasAlert: hasOverdue
+      };
+    });
+  }
 }

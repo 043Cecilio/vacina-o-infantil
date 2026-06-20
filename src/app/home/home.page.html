@@ -1,20 +1,60 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Sua Família - Saúde Infantil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="section-container ion-margin-bottom">
+    <h2 style="color: var(--vax-dark); font-weight: bold;">📢 Campanhas Ativas</h2>
+    <div *ngFor="let campaign of activeCampaigns">
+      <ion-card style="background-color: var(--vax-warning); margin: 0;">
+        <ion-card-header>
+          <ion-card-title style="color: var(--vax-dark); font-weight: bold;">{{ campaign.title }}</ion-card-title>
+          <ion-card-subtitle style="color: var(--vax-dark);">Público: {{ campaign.target }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content style="color: var(--vax-dark);">
+          {{ campaign.description }}
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
+
+  <div class="section-container ion-margin-top">
+    <h2 style="color: var(--vax-dark); font-weight: bold;">👶 Suas Crianças</h2>
+    
+    <ion-grid style="padding: 0;">
+      <ion-row>
+        <ion-col size="12" size-md="6" *ngFor="let child of childrenList" style="padding: 8px 0;">
+          <ion-card style="margin: 0 4px;">
+            <ion-card-header>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <ion-card-title style="color: var(--vax-dark); font-weight: bold;">{{ child.name }}</ion-card-title>
+                
+                <ion-badge [color]="child.hasAlert ? 'danger' : 'success'">
+                  {{ child.statusResumo }}
+                </ion-badge>
+              </div>
+              <ion-card-subtitle>Nascimento: {{ child.birthDate | date:'dd/MM/yyyy' }}</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+              <p *ngIf="child.hasAlert" style="color: var(--vax-alert); font-weight: 500;">
+                ⚠️ Há vacinas obrigatórias com o prazo ultrapassado!
+              </p>
+              <p *ngIf="!child.hasAlert" style="color: var(--vax-success); font-weight: 500;">
+                ✅ Todas as vacinas previstas estão regulares.
+              </p>
+              
+              <ion-button expand="block" color="primary" style="margin-top: 15px;" [routerLink]="['/child-detail', child.id]">
+                Ver Carteira de Vacinas
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>

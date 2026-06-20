@@ -1,2 +1,18 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
+:root {
+  --vax-success: #ABC270;
+  --vax-warning: #FEC868;
+  --vax-alert: #FDA769;
+  --vax-dark: #473C33;
+
+  --ion-color-primary: var(--vax-dark);
+  --ion-color-primary-rgb: 71, 60, 51;
+
+  --ion-color-success: var(--vax-success);
+  --ion-color-success-rgb: 171, 194, 112;
+
+  --ion-color-warning: var(--vax-warning);
+  --ion-color-warning-rgb: 254, 200, 104;
+
+  --ion-color-danger: var(--vax-alert);
+  --ion-color-danger-rgb: 253, 167, 105;
+}

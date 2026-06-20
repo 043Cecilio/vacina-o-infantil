@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carteira de Vacinação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <div *ngIf="child" class="ion-margin-bottom" style="text-align: center;">
+    <h1 style="color: var(--vax-dark); font-weight: bold; margin-bottom: 4px;">{{ child.name }}</h1>
+    <p style="margin-top: 0; color: #666;">Nascimento: {{ child.birthDate | date:'dd/MM/yyyy' }}</p>
+  </div>
+
+  <ion-segment [(ngModel)]="segmentView" [value]="segmentView" class="ion-margin-bottom">
+    <ion-segment-button value="all">
+      <ion-label>Todas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="applied">
+      <ion-label>Aplicadas</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="pending">
+      <ion-label>Próximas / Pendentes</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list lines="none" style="background: transparent;">
+    <ion-item-group *ngIf="filteredRecords.length > 0; else noRecords">
+      
+      <ion-item *ngFor="let record of filteredRecords" style="--background: transparent; margin-bottom: 10px;">
+        <ion-card style="width: 100%; margin: 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+          <ion-card-content style="display: flex; justify-content: space-between; align-items: center; padding: 16px;">
+            
+            <div>
+              <h3 style="color: var(--vax-dark); font-weight: bold; margin: 0 0 4px 0; font-size: 1.1rem;">
+                {{ record.vaccineName }}
+              </h3>
+              <p style="margin: 0; font-size: 0.9rem; color: #555;">Dose: {{ record.dose }}</p>
+              
+              <p *ngIf="record.appliedAt" style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--vax-success);">
+                Aplicada em: {{ record.appliedAt | date:'dd/MM/yyyy' }}
+              </p>
+              <p *ngIf="!record.appliedAt" style="margin: 4px 0 0 0; font-size: 0.85rem;">
+                Prazo limite: {{ record.dueDate | date:'dd/MM/yyyy' }}
+              </p>
+            </div>
+
+            <div>
+              <ion-badge *ngIf="record.status === 'applied'" style="--background: var(--vax-success); color: var(--vax-dark);">
+                Realizada
+              </ion-badge>
+              <ion-badge *ngIf="record.status === 'pending'" style="--background: var(--vax-warning); color: var(--vax-dark);">
+                Prevista
+              </ion-badge>
+              <ion-badge *ngIf="record.status === 'overdue'" style="--background: var(--vax-alert); color: white;">
+                Atrasada
+              </ion-badge>
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+
+    </ion-item-group>
+
+    <ng-template #noRecords>
+      <div style="text-align: center; padding: 40px 20px; color: #777;">
+        <p>Nenhuma vacina encontrada para este filtro.</p>
+      </div>
+    </ng-template>
+  </ion-list>
+
+</ion-content>
