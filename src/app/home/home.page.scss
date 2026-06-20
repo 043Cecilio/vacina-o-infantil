@@ -25,3 +25,56 @@
 #container a {
   text-decoration: none;
 }
+
+.app-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  width: 100%;
+}
+
+.carousel-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.banner-display {
+  width: 100%;
+  max-width: 620px;
+}
+
+.campaign-banner-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: #FEC868;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 22px;
+  line-height: 1;
+  color: #473C33;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-arrow-left {
+  left: 570px;
+}
+
+.carousel-arrow-right {
+  right: 570px;
+}

@@ -16,6 +16,12 @@ import { IChild, VaccineStatus } from '../core/models/vaccine.model';
 export class HomePage implements OnInit {
   public childrenList: any[] = [];
   public activeCampaigns: any[] = [];
+  public currentBannerIndex = 0;
+  public banners = [
+    'assets/banner.png',
+    'assets/banner-1.png',
+    'assets/banner-2.png'
+  ];
 
   constructor(
     private dataService: DataService,
@@ -25,6 +31,14 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.activeCampaigns = this.dataService.getCampaigns();
     this.loadChildrenDashboard();
+  }
+
+  nextBanner() {
+    this.currentBannerIndex = (this.currentBannerIndex + 1) % this.banners.length;
+  }
+
+  prevBanner() {
+    this.currentBannerIndex = (this.currentBannerIndex - 1 + this.banners.length) % this.banners.length;
   }
 
   loadChildrenDashboard() {
