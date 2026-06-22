@@ -152,7 +152,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  gap: 10px;
   padding: 18px 0;
   border-radius: 16px;
   overflow: hidden;
@@ -164,7 +164,7 @@
   max-width: 620px;
   position: relative;
   z-index: 1;
-  padding: 0 48px;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -179,9 +179,8 @@
 }
 
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: static;
+  transform: none;
   z-index: 2;
   background: #FEC868;
   border: none;
@@ -193,14 +192,13 @@
   color: #473C33;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
-.carousel-arrow-left {
-  left: 12px;
-}
-
+.carousel-arrow-left,
 .carousel-arrow-right {
-  right: 12px;
+  left: auto;
+  right: auto;
 }
 
 @media (max-width: 480px) {
