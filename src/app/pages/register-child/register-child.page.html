@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Solicitar cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="successMessage" class="success-banner">
+    {{ successMessage }}
+  </div>
+
+  <form (ngSubmit)="submitForm()">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label position="stacked">Nome da criança</ion-label>
+        <ion-input [(ngModel)]="child.name" name="name" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Data de nascimento</ion-label>
+        <ion-input type="date" [(ngModel)]="child.birthDate" name="birthDate" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Sexo</ion-label>
+        <ion-select [(ngModel)]="child.gender" name="gender" placeholder="Selecione">
+          <ion-select-option value="M">Masculino</ion-select-option>
+          <ion-select-option value="F">Feminino</ion-select-option>
+          <ion-select-option value="Outro">Outro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">CPF</ion-label>
+        <ion-input [(ngModel)]="child.cpf" name="cpf" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nome do responsável</ion-label>
+        <ion-input [(ngModel)]="child.parentName" name="parentName" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Telefone</ion-label>
+        <ion-input [(ngModel)]="child.phone" name="phone" type="tel"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Observações</ion-label>
+        <ion-textarea [(ngModel)]="child.notes" name="notes" rows="4"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="block" type="submit" color="success" style="margin-top: 16px;">
+      Enviar solicitação
+    </ion-button>
+  </form>
+</ion-content>

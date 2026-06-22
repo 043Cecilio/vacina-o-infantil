@@ -1,0 +1,24 @@
+.ion-padding {
+  padding-top: 16px;
+}
+
+.success-banner {
+  background: var(--vax-success);
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-item {
+  --background: #fff;
+  --border-color: #e5e7eb;
+  margin-bottom: 8px;
+  border-radius: 10px;
+}

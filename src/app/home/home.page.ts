@@ -18,9 +18,9 @@ export class HomePage implements OnInit {
   public activeCampaigns: any[] = [];
   public currentBannerIndex = 0;
   public banners = [
-    'assets/banner.png',
-    'assets/banner-1.png',
-    'assets/banner-2.png'
+    'assets/images/banner.png',
+    'assets/images/banner-1.png',
+    'assets/images/banner-2.png'
   ];
 
   constructor(

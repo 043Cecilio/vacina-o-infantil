@@ -7,6 +7,10 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
   <div class="section-container ion-margin-bottom">
+    <div class="carousel-top-row">
+      <button class="campaign-button" type="button" [routerLink]="['/campaigns']">Veja todas as campanhas</button>
+    </div>
+
     <div class="carousel-container">
       <button class="carousel-arrow carousel-arrow-left" (click)="prevBanner()" type="button" aria-label="Banner anterior">
         ‹
@@ -27,32 +31,38 @@
   </div>
 
   <div class="section-container ion-margin-top">
-    <h2 style="color: var(--vax-dark); font-weight: bold;">👶 Suas Crianças</h2>
+    <div class="children-header-row">
+      <h2 class="children-title">Suas Crianças</h2>
+      <button class="register-button" type="button" [routerLink]="['/register-child']">
+        <span class="register-button-icon">+</span>
+        <span>Solicitar cadastro</span>
+      </button>
+    </div>
     
     <ion-grid style="padding: 0;">
       <ion-row>
         <ion-col size="12" size-md="6" *ngFor="let child of childrenList" style="padding: 8px 0;">
-          <ion-card style="margin: 0 4px;">
+          <ion-card class="child-card" style="margin: 0 4px;">
             <ion-card-header>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <ion-card-title style="color: var(--vax-dark); font-weight: bold;">{{ child.name }}</ion-card-title>
+              <div class="child-card-header">
+                <ion-card-title class="child-card-title">{{ child.name }}</ion-card-title>
                 
-                <ion-badge [color]="child.hasAlert ? 'danger' : 'success'">
+                <ion-badge [color]="child.hasAlert ? 'danger' : 'success'" class="child-status-badge" [ngClass]="child.hasAlert ? 'child-status-badge-warning' : 'child-status-badge-success'">
                   {{ child.statusResumo }}
                 </ion-badge>
               </div>
-              <ion-card-subtitle>Nascimento: {{ child.birthDate | date:'dd/MM/yyyy' }}</ion-card-subtitle>
+              <ion-card-subtitle class="child-card-subtitle">Nascimento: {{ child.birthDate | date:'dd/MM/yyyy' }}</ion-card-subtitle>
             </ion-card-header>
 
             <ion-card-content>
-              <p *ngIf="child.hasAlert" style="color: var(--vax-alert); font-weight: 500;">
-                ⚠️ Há vacinas obrigatórias com o prazo ultrapassado!
+              <p *ngIf="child.hasAlert" class="child-card-alert">
+                Há vacinas obrigatórias com o prazo ultrapassado!
               </p>
-              <p *ngIf="!child.hasAlert" style="color: var(--vax-success); font-weight: 500;">
-                ✅ Todas as vacinas previstas estão regulares.
+              <p *ngIf="!child.hasAlert" class="child-card-success">
+                Todas as vacinas previstas estão regulares.
               </p>
               
-              <ion-button expand="block" color="primary" style="margin-top: 15px;" [routerLink]="['/child-detail', child.id]">
+              <ion-button expand="block" color="primary" class="child-card-button" [routerLink]="['/child-detail', child.id]">
                 Ver Carteira de Vacinas
               </ion-button>
             </ion-card-content>

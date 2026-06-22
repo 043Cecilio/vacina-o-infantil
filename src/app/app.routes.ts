@@ -14,4 +14,12 @@ export const routes: Routes = [
     path: 'child-detail/:id', 
     loadComponent: () => import('./pages/child-detail/child-detail.page').then(m => m.ChildDetailPage)
   },
+  {
+    path: 'campaigns',
+    loadComponent: () => import('./pages/campaigns/campaigns.page').then(m => m.CampaignsPage)
+  },
+  {
+    path: 'register-child',
+    loadComponent: () => import('./pages/register-child/register-child.page').then(m => m.RegisterChildPage)
+  },
 ];

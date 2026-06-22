@@ -33,17 +33,129 @@
   width: 100%;
 }
 
+.carousel-top-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.campaign-button {
+  background: #FEC868;
+  color: #473C33;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.child-card {
+  background: #4a4a4a;
+  color: #f7f7f7;
+  border-radius: 14px;
+}
+
+.child-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.child-card-title {
+  color: #f7f7f7 !important;
+  font-weight: 700;
+}
+
+.child-card-subtitle {
+  color: #e6e6e6 !important;
+}
+
+.child-status-badge {
+  white-space: normal;
+  text-align: center;
+}
+
+.child-status-badge-warning {
+  color: #473C33 !important;
+}
+
+.child-status-badge-success {
+  color: #473C33 !important;
+}
+
+.child-card-alert {
+  color: #ffcf99;
+  font-weight: 500;
+}
+
+.child-card-success {
+  color: #d8f3b2;
+  font-weight: 500;
+}
+
+.child-card-button {
+  margin-top: 15px;
+}
+
+.children-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.children-title {
+  color: var(--vax-dark);
+  font-weight: bold;
+  margin: 0;
+}
+
+.register-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--vax-success);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.register-button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .carousel-container {
   width: 100%;
+  min-height: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 18px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: transparent;
 }
 
 .banner-display {
   width: 100%;
   max-width: 620px;
+  position: relative;
+  z-index: 1;
 }
 
 .campaign-banner-image {
@@ -52,6 +164,7 @@
   display: block;
   border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .carousel-arrow {
