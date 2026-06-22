@@ -10,7 +10,6 @@
 ![Angular](https://img.shields.io/badge/Angular_18-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 </div>
 
@@ -71,8 +70,6 @@ vacina-infantil/
 │   └── theme/
 │       └── variables.scss                     # 🎨 Design Tokens — Paleta global de cores
 │
-├── .github/
-│   └── workflows/                             # CI/CD pipeline
 ├── ionic.config.json
 ├── angular.json
 └── package.json
@@ -102,7 +99,6 @@ vacina-infantil/
 | Tela de detalhes com filtro por abas (`ion-segment`) | ✅ Concluído |
 | Badges coloridos por status vacinal | ✅ Concluído |
 | Design System com variáveis SCSS globais | ✅ Concluído |
-| Deploy contínuo via Vercel + GitHub Actions | ✅ Concluído |
 
 ---
 
@@ -153,7 +149,6 @@ O `DataService` cadastra múltiplos filhos com situações vacinais completament
 [✅] Dashboard com Grid Responsivo e banner de campanhas
 [✅] Tela de detalhes com filtro por abas e badges de status
 [✅] Design System com paleta semântica via SCSS variables
-[✅] Deploy contínuo via Vercel + GitHub Actions
 [ ] Autenticação de usuários (Firebase Auth)
 [ ] Persistência de dados em nuvem (Firestore)
 [ ] Notificações push para prazos próximos
@@ -213,8 +208,6 @@ A aplicação estará disponível em: `http://localhost:8100`
 | Estilização | SCSS + Design Tokens globais |
 | Componentes UI | Ionic Components (`ion-grid`, `ion-segment`, `ion-badge`) |
 | Arquitetura | Clean Architecture (Core / Pages) |
-| Deploy | Vercel |
-| CI/CD | GitHub Actions |
 | Versionamento | Git e GitHub |
 
 
